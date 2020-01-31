@@ -6,6 +6,7 @@ interface CounterProps {
   value: number;
   dispatch: Function;
   index: string;
+  backgroundColor: string;
 }
 
 const styles = StyleSheet.create({
@@ -20,7 +21,12 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function Counter({ value, dispatch, index }: CounterProps) {
+export default function Counter({
+  value,
+  dispatch,
+  index,
+  backgroundColor
+}: CounterProps) {
   function increment() {
     dispatch({
       type: "increment",
@@ -34,7 +40,7 @@ export default function Counter({ value, dispatch, index }: CounterProps) {
     });
   }
   return (
-    <View style={styles.counterContainer}>
+    <View style={[styles.counterContainer, { backgroundColor }]}>
       <Button
         icon={<Icon name="circle-with-minus" type="entypo" color="white" />}
         onPress={decrement}
