@@ -6,6 +6,7 @@ import { Map } from "immutable";
 
 import { RootParamList } from "src/routers/Root";
 import DrawerHeader from "src/components/DrawerHeader";
+import Counter from "./components/Counter";
 
 interface HomeProps {
   navigation: DrawerNavigationProp<RootParamList, "Home">;
@@ -45,8 +46,8 @@ function reducer(state: Map<string, any>, action: ReducerActions) {
 }
 
 const initialState = Map({
-  1: 10,
-  2: 10
+  "1": 10,
+  "2": 10
 });
 
 export default function Home({}: HomeProps) {
@@ -55,30 +56,8 @@ export default function Home({}: HomeProps) {
     <SafeAreaView style={styles.container}>
       <DrawerHeader title="Contador" />
       <View style={styles.countersContainer}>
-        <View style={styles.counterContainer}>
-          <Button
-            icon={<Icon name="circle-with-minus" type="entypo" color="white" />}
-            onPress={() =>
-              dispatch({
-                type: "decrement",
-                value: { index: "1", amount: 1 }
-              })
-            }
-          />
-          <Text style={styles.counterText}>{state.get("1")}</Text>
-          <Button
-            icon={<Icon name="circle-with-plus" type="entypo" color="white" />}
-            onPress={() =>
-              dispatch({
-                type: "increment",
-                value: { index: "1", amount: 1 }
-              })
-            }
-          />
-        </View>
-        <View style={styles.counterContainer}>
-          <Text style={styles.counterText}>{state.get("2")}</Text>
-        </View>
+        <Counter index="1" dispatch={dispatch} value={state.get("1")} />
+        <Counter index="2" dispatch={dispatch} value={state.get("2")} />
       </View>
     </SafeAreaView>
   );
