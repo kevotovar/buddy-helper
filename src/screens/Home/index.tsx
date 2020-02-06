@@ -54,19 +54,22 @@ const initialState = Map({
 
 export default function Home({}: HomeProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  function resetCounter() {
+    dispatch({ type: "reset" })
+  }
   return (
     <SafeAreaView style={styles.container}>
       <DrawerHeader title="Contador" />
       <View style={styles.countersContainer}>
-        <Counter index="1" dispatch={dispatch} value={state.get("1")} />
+        <Counter index="1" dispatch={dispatch} value={state.get("1")} backgroundColor="#ef5350" />
         <View>
           <Button
-            onPress={() => dispatch({ type: "reset" })}
+            onPress={resetCounter}
             icon={<Icon name="refresh" color="white" />}
-            buttonStyle={{ backgroundColor: "black", borderRadius: 0 }}
+            buttonStyle={{ backgroundColor: "#666", borderRadius: 0 }}
           />
         </View>
-        <Counter index="2" dispatch={dispatch} value={state.get("2")} />
+        <Counter index="2" dispatch={dispatch} value={state.get("2")} backgroundColor="#64b5f6"/>
       </View>
     </SafeAreaView>
   );
