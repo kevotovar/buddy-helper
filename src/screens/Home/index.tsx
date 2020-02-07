@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import { View, StyleSheet, SafeAreaView } from "react-native";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { Text, Button, Icon } from "react-native-elements";
+import { Button, Icon } from "react-native-elements";
 import { Map } from "immutable";
 
 import { RootParamList } from "src/routers/Root";
